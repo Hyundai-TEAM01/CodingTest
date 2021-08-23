@@ -1,0 +1,1 @@
+SELECT ANIMAL_ID, NAME From animal_ins where intake_condition = 'Sick' order by animal_id;
