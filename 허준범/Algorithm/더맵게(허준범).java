@@ -20,9 +20,10 @@ class Solution {
             cntMix++;    
         }
         
-        if(priorQue.peek() < K) // 가장 낮은 스코빌 지수 확인
+        // 가장 낮은 스코빌 지수 확인
+        if(priorQue.peek() < K) // 제한 사항에서 모든 음식을 K이상으로 만들 수 없는 경우 -1 return
             answer = -1;
-        else // 제한 사항에서 모든 음식을 K이상으로 만들 수 없는 경우 -1 return
+        else  
             answer = cntMix;
         
         return answer;
