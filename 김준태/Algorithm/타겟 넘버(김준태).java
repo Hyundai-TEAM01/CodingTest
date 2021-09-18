@@ -4,16 +4,16 @@ class Solution {
     public static void dfs(int[] numbers, int depth, int target, int value){
         
         // 종료 조건
-        if (depth  == numbers.length - 1){
+        if (depth  == numbers.length){
             if (value == target){
-                System.out.println(depth + " 일 때 " + value);
+                // System.out.println(depth + " 일 때 " + value);
                 count++;
                 return;
             }
         }
         
         if ( depth < numbers.length ){
-            System.out.println(depth + 1 + " " + numbers[depth] + " value : " + value);
+            // System.out.println(depth + 1 + " " + numbers[depth] + " value : " + value);
             dfs(numbers, depth + 1, target, value + numbers[depth]);
             dfs(numbers, depth + 1, target, value - numbers[depth]);
         }
