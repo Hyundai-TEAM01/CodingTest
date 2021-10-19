@@ -1,0 +1,2 @@
+-- 코드를 입력하세요
+select distinct(m.CART_ID) From (SELECT CART_ID FROM CART_PRODUCTS WHERE NAME='Milk') m,(SELECT  CART_ID FROM CART_PRODUCTS WHERE NAME='Yogurt') y where m.CART_ID = y.CART_ID order by m.CART_ID;
