@@ -1,0 +1,1 @@
+SELECT ANIMAL_ID,NAME, TO_CHAR(DATETIME,'yyyy-MM-dd') as ³¯Â¥ From ANIMAL_INS order by ANIMAL_ID;
