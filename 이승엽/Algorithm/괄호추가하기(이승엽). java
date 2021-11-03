@@ -1,0 +1,62 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static long[] numbers;
+	static char[] ops;
+	static long answer;
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		sc.nextLine();
+		String str = sc.nextLine();
+		ops = new char[(N + 1) / 2 - 1];
+		numbers = new long[(N + 1) / 2];
+
+		for (int i = 0; i < str.length(); i++) {
+			if (i % 2 == 0) {
+				numbers[i / 2] = str.charAt(i) - '0';
+			} else {
+				ops[i / 2] = str.charAt(i);
+			}
+		}
+        answer = Integer.MIN_VALUE;
+        
+		dfs(0,numbers[0]);
+		System.out.println(answer);
+	}
+
+	static void dfs(int opidx, long sum) {
+		if (opidx == ops.length) {
+			if (sum > answer) {
+				answer = sum;
+			}
+			return;
+		}
+
+		// °ýÈ£ x
+		dfs(opidx + 1, cal(sum, numbers[opidx + 1], opidx));
+
+		// °ýÈ£ o
+		if (opidx + 2 < numbers.length) {
+			long val = cal(numbers[opidx + 1], numbers[opidx + 2], opidx+1);
+			dfs(opidx + 2, cal(sum, val, opidx));
+		}
+
+	}
+
+	static long cal(long n1, long n2, int opidx) {
+		switch (ops[opidx]) {
+		case '+':
+			return n1 + n2;
+		case '-':
+			return n1 - n2;
+		case '*':
+			return n1 * n2;
+		default:
+			return 0;
+		}
+	}
+
+}
